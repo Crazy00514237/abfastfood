@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AB Fast Food & Snacks (AMIT BROTHERS) – Kabilpore, Navsari</title>
+<meta name="description" content="Desi ghee tawa idlis, loaded burgers, fresh patra and petis. Kabilpore, Navsari. Open daily 8:00 AM – 10:30 PM. Dine-in, takeaway and bulk orders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+:root{--cream:#FBF8F3;--oat:#F4EFE6;--ink:#221A15;--bark:#6B5E55;--terra:#C85A32;--amber:#D4A373;--roast:#19120F}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--bark);font-family:'Plus Jakarta Sans','Noto Sans Gujarati',sans-serif;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:'Playfair Display','Noto Sans Gujarati',serif;color:var(--ink)}
+.gu{font-family:'Noto Sans Gujarati',sans-serif}
+.script{font-family:'Caveat','Playfair Display',cursive;font-style:italic;color:var(--terra);font-weight:600}
+.btn{background:var(--terra);color:#fff;padding:.7rem 1.4rem;border-radius:999px;font-weight:600;font-size:.85rem;letter-spacing:.04em;transition:background .2s}
+.btn:hover{background:#a8451f}
+:is(.btn,a,button):focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.tag{display:inline-block;background:var(--terra);color:#fff;padding:0 1rem .1rem;transform:rotate(-2.5deg);clip-path:polygon(2% 12%,18% 0,45% 6%,78% 0,98% 10%,100% 55%,96% 92%,70% 100%,35% 94%,6% 100%,0 60%);box-shadow:0 6px 0 rgba(34,26,21,.15)}
+.stage{perspective:1000px}
+.fcard{background:#fff;border-radius:1.5rem;overflow:hidden;box-shadow:0 30px 50px -25px rgba(34,26,21,.45),0 8px 14px -8px rgba(34,26,21,.2);transform-style:preserve-3d}
+.fcard img{width:100%;height:210px;object-fit:cover}
+.ph{background:linear-gradient(135deg,var(--amber),var(--terra))}
+.tab{padding:.45rem 1rem;border-radius:999px;border:1px solid var(--amber);font-size:.85rem;color:var(--ink)}
+.tab.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.pol{background:#fff;padding:.6rem .6rem 1rem;width:170px;box-shadow:0 12px 26px -8px rgba(34,26,21,.4);transition:transform .35s,box-shadow .35s;cursor:grab;touch-action:none;user-select:none;transform-origin:top center}
+.pol:hover,.pol.drag{transform:translateY(-12px) rotate(0) scale(1.05)!important;box-shadow:0 28px 40px -12px rgba(34,26,21,.5);z-index:5}
+.pol img{width:100%;height:130px;object-fit:cover;pointer-events:none}
+.stamp{font-size:.68rem;color:var(--bark);letter-spacing:.04em}
+#drawer{transform:translateX(100%);transition:transform .35s}
+#drawer.open{transform:none}
+.qty{width:28px;height:28px;border-radius:50%;border:1px solid var(--amber);color:var(--ink)}
+.big span{display:block;font-size:clamp(3.4rem,10vw,7rem);line-height:.95;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink)}
+.big span.it{font-style:italic;font-weight:500;color:var(--terra)}
+.thumb{width:64px;height:64px;border-radius:14px;object-fit:cover;flex-shrink:0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="text-center text-sm py-2 px-4" style="background:var(--ink);color:var(--oat)">✨ Fresh Patra &amp; Petis Available Daily • Live Tawa Idli in Pure Desi Ghee</div>
+
+<header class="sticky top-0 z-40 backdrop-blur" style="background:rgba(251,248,243,.92);border-bottom:1px solid var(--oat)">
+ <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-3">
+  <a href="#top" class="flex items-center gap-3" aria-label="AB - AMIT BROTHERS">
+   <span class="serif w-11 h-11 rounded-full flex items-center justify-center font-bold" style="border:1.5px solid var(--terra);color:var(--terra)">AB</span>
+   <span class="leading-tight hidden sm:block"><span class="serif block text-sm font-bold">AB</span><span class="text-[10px] tracking-[.25em]">AMIT BROTHERS</span></span>
+  </a>
+  <nav class="hidden md:flex gap-7 text-xs font-semibold tracking-widest" style="color:var(--ink)">
+   <a href="#memories" data-i="nav1">MEMORIES</a><a href="#ritual" data-i="nav2">RITUAL</a><a href="#menu" data-i="nav3">MENU</a><a href="#visit" data-i="nav4">VISIT US</a>
+  </nav>
+  <div class="flex items-center gap-3">
+   <div class="text-xs font-semibold" style="color:var(--ink)" role="group" aria-label="Language / લખાણ"><button id="lEN" class="px-1">EN</button>|<button id="lGU" class="px-1 gu">ગુજ</button></div>
+   <button class="btn hidden sm:block" onclick="toggleCart(true)" data-i="order">ORDER TAKEAWAY</button>
+  </div>
+ </div>
+</header>
+
+<main id="top">
+<section class="max-w-6xl mx-auto px-5 pt-14 pb-20">
+ <div class="max-w-3xl">
+  <h1 class="text-5xl md:text-7xl font-bold leading-[1.1]"><span data-i="h1a">Taste That Stays With Your</span> <span class="tag" data-i="h1b">Heart</span></h1>
+  <p class="mt-6 max-w-xl text-lg" data-i="heroP">Desi ghee tawa idlis, loaded burgers, and a table worth staying for.</p>
+  <p class="mt-3 text-sm" data-i="svc">Dine-in · Takeaway · Bulk orders</p>
+ </div>
+ <div class="stage grid md:grid-cols-3 gap-8 mt-14" id="hero"></div>
+</section>
+
+<section id="ritual" class="py-20" style="background:var(--oat)">
+ <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+  <div>
+   <p class="text-xs tracking-[.25em] font-semibold" style="color:var(--terra)" data-i="pre">THIS IS NOT JUST FAST FOOD.</p>
+   <h2 class="big mt-4"><span data-i="s1">Steamed.</span><span data-i="s2">Sizzled.</span><span class="it" data-i="s3">Spiced.</span></h2>
+   <p class="mt-6 max-w-md" data-i="storyP">Our recipes are slow-cooked, never rushed. Local spices are ground fresh, the idli batter rests overnight, and everything that deserves it is finished in pure desi ghee. That is the whole secret.</p>
+   <a href="#menu" class="inline-block mt-6 text-xs font-semibold tracking-widest underline underline-offset-8" style="color:var(--ink)" data-i="explore">EXPLORE THE MENU ↘</a>
+  </div>
+  <div>
+   <div class="overflow-hidden" style="border-radius:32px"><img id="slideImg" class="w-full h-[380px] object-cover ph" alt="Sizzling tawa idli cubes with mustard seeds and coriander"></div>
+   <div class="flex items-center justify-between gap-3 mt-4 text-sm">
+    <p id="slideCap" style="color:var(--ink)"></p>
+    <div class="flex gap-2 shrink-0"><button class="qty" onclick="slide(-1)" aria-label="Previous">‹</button><button class="qty" onclick="slide(1)" aria-label="Next">›</button></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="memories" class="max-w-6xl mx-auto px-5 py-20">
+ <h2 class="text-4xl md:text-5xl font-bold text-center">The AB <span class="script text-5xl md:text-6xl" data-i="mt">Memory Tree</span></h2>
+ <p class="text-center mt-3 max-w-xl mx-auto" data-i="treeP">Every plate leaves a little memory behind. Friendly faces, evening chai rushes, and the moments that make AB feel like home.</p>
+ <div class="relative mt-10 h-[400px] overflow-x-auto md:overflow-visible">
+  <svg class="absolute inset-0 w-full h-full min-w-[900px]" viewBox="0 0 1000 400" preserveAspectRatio="none" fill="none" stroke="#6B5E55" stroke-linecap="round" aria-hidden="true">
+   <path d="M0 50 C200 10 380 100 560 55 S880 15 1000 70" stroke-width="7"/>
+   <path d="M100 30 C130 90 90 140 120 190" stroke-width="2"/><path d="M360 75 C390 120 350 160 380 200" stroke-width="2"/>
+   <path d="M610 60 C640 100 600 150 630 195" stroke-width="2"/><path d="M850 28 C880 80 840 130 870 185" stroke-width="2"/>
+   <path d="M250 62 q14 -26 42 -22 M480 85 q18 -26 46 -14 M740 38 q14 -24 40 -18" stroke="#C85A32" stroke-width="3"/>
+  </svg>
+  <div id="tree" class="relative min-w-[900px] h-full"></div>
+ </div>
+</section>
+
+<section id="menu" class="py-20" style="background:var(--oat)">
+ <div class="max-w-6xl mx-auto px-5">
+  <h2 class="text-4xl md:text-5xl font-bold" data-i="menuT">The Menu</h2>
+  <div class="flex flex-wrap gap-2 mt-6" id="tabs" role="tablist"></div>
+  <div class="grid md:grid-cols-2 gap-x-12 mt-8" id="menuList"></div>
+ </div>
+</section>
+
+<section id="visit" class="max-w-6xl mx-auto px-5 py-20">
+ <div class="grid md:grid-cols-2 bg-white overflow-hidden shadow-xl" style="border-radius:32px">
+  <div class="p-8 md:p-10">
+   <p id="live" class="text-sm font-semibold"></p>
+   <h2 class="text-3xl font-bold mt-3" data-i="visitT">Visit Us</h2>
+   <p class="mt-4">AMIT BROTHERS, KABILPORE, JIRAINAGAR ROAD, TANAVSARI, Kabilpore, Navsari, Gujarat 396427</p>
+   <p class="mt-3 flex gap-2"><i data-lucide="clock" class="w-5 h-5 shrink-0" style="color:var(--terra)"></i><span data-i="hours">8:00 AM – 10:30 PM, daily</span></p>
+   <a class="btn inline-block mt-6" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=AMIT+BROTHERS+Kabilpore+Navsari" data-i="dir">Get Directions</a>
+  </div>
+  <iframe title="Map to AMIT BROTHERS, Kabilpore, Navsari" class="w-full min-h-[320px] border-0" loading="lazy" src="https://www.google.com/maps?q=AMIT+BROTHERS+Kabilpore+Navsari+Gujarat+396427&output=embed"></iframe>
+ </div>
+</section>
+</main>
+
+<footer style="background:var(--roast);color:#cbbfb3" class="pt-16 pb-8">
+ <div class="max-w-6xl mx-auto px-5 grid sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm">
+  <div><div class="flex items-center gap-3"><span class="serif w-11 h-11 rounded-full flex items-center justify-center font-bold" style="border:1.5px solid var(--amber);color:var(--amber)">AB</span><h3 class="serif text-xl" style="color:var(--cream)">AMIT BROTHERS</h3></div><p class="mt-4" data-i="brand">Two brothers, one tawa, and a promise to keep the recipes honest and the ghee pure.</p></div>
+  <div><h4 class="font-semibold mb-3" style="color:var(--cream)" data-i="fq">Quick Menu</h4><ul class="space-y-2"><li><a href="#menu" data-i="nav3">MENU</a></li><li><a href="#ritual" data-i="nav2">RITUAL</a></li><li><a href="#memories" data-i="nav1">MEMORIES</a></li><li><a href="#visit" data-i="nav4">VISIT US</a></li></ul></div>
+  <div><h4 class="font-semibold mb-3" style="color:var(--cream)" data-i="fl">Find Us</h4><p>Jirainagar Road, Tanavsari, Kabilpore, Navsari, Gujarat 396427</p><p class="mt-2" data-i="hours">8:00 AM – 10:30 PM, daily</p></div>
+  <div><h4 class="font-semibold mb-3" style="color:var(--cream)" data-i="fb">Bulk Orders &amp; Catering</h4><p data-i="fbP">Patra and petis by the kilo for weddings, festivals and offices.</p><button class="btn mt-4" onclick="sendWA(true)" data-i="fbBtn">Chat on WhatsApp</button></div>
+ </div>
+ <p class="text-center text-xs mt-12 opacity-70">© 2026 AMIT BROTHERS (AB Fast Food &amp; Snacks), Kabilpore, Navsari. Taste Crafted with Care.</p>
+</footer>
+
+<button onclick="toggleCart(true)" class="fixed bottom-5 right-5 z-30 btn flex items-center gap-2 shadow-xl" aria-label="Open order"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span class="cN">0</span> · ₹<span class="cT">0</span></button>
+
+<aside id="drawer" class="fixed top-0 right-0 h-full w-full max-w-sm z-50 bg-white shadow-2xl flex flex-col" aria-label="Order">
+ <div class="p-5 flex justify-between items-center" style="border-bottom:1px solid var(--oat)"><h3 class="text-2xl font-bold" data-i="yo">Your Order</h3><button onclick="toggleCart(false)" aria-label="Close"><i data-lucide="x"></i></button></div>
+ <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+ <div class="p-5" style="border-top:1px solid var(--oat)">
+  <div class="flex justify-between font-semibold text-lg" style="color:var(--ink)"><span data-i="total">Total</span><span>₹<span class="cT">0</span></span></div>
+  <button class="btn w-full mt-4" onclick="sendWA()" data-i="send">Order via WhatsApp</button>
+ </div>
+</aside>
+
+<script>
+// Replace with the shop's WhatsApp number: country code, no "+" or spaces.
+const WA_NUMBER="919999999999";
+const P=id=>`https://images.unsplash.com/${id}?w=800&q=80&auto=format&fit=crop`;
+const IM={idli:"photo-1589301760014-d929f3979dbc",burger:"photo-1568901346375-23c9450c58cd",coffee:"photo-1461023058943-07fcbe16d735",sand:"photo-1528735602780-2552fd46c7af",fries:"photo-1573080496219-bb080dd4f877",farsan:"photo-1606491956689-2ea866880c84",chai:"photo-1561336313-0bd5e0b27ec8",vada:"photo-1630383249896-424e482df921"};
+const T={
+en:{nav1:"MEMORIES",nav2:"RITUAL",nav3:"MENU",nav4:"VISIT US",order:"ORDER TAKEAWAY",h1a:"Taste That Stays With Your",h1b:"Heart",heroP:"Desi ghee tawa idlis, loaded burgers, and a table worth staying for.",svc:"Dine-in · Takeaway · Bulk orders",
+ pre:"THIS IS NOT JUST FAST FOOD.",s1:"Steamed.",s2:"Sizzled.",s3:"Spiced.",storyP:"Our recipes are slow-cooked, never rushed. Local spices are ground fresh, the idli batter rests overnight, and everything that deserves it is finished in pure desi ghee. That is the whole secret.",explore:"EXPLORE THE MENU ↘",
+ mt:"Memory Tree",treeP:"Every plate leaves a little memory behind. Friendly faces, evening chai rushes, and the moments that make AB feel like home.",menuT:"The Menu",visitT:"Visit Us",hours:"8:00 AM – 10:30 PM, daily",dir:"Get Directions",
+ brand:"Two brothers, one tawa, and a promise to keep the recipes honest and the ghee pure.",fq:"Quick Menu",fl:"Find Us",fb:"Bulk Orders & Catering",fbP:"Patra and petis by the kilo for weddings, festivals and offices.",fbBtn:"Chat on WhatsApp",
+ yo:"Your Order",total:"Total",send:"Order via WhatsApp",add:"+ Add",empty:"Nothing here yet. Add something from the menu.",sig:"SIGNATURE",
+ open:"● Open Now • Closes 10:30 PM",closed:"● Closed • Opens 8:00 AM",
+ cats:{all:"All",south:"South Indian",burger:"Burgers & Fries",sand:"Sandwiches",farsan:"Traditional Snacks",bev:"Beverages"},
+ hero:["Signature Tawa Idli in Pure Desi Ghee","AB Special Jumbo Veg Cheese Burger","Chilled Whipped Cold Coffee"],
+ mem:[["The Morning Steam","Steaming hot idli batches","6:30 AM"],["The Sizzling Grill","Melting cheese sandwiches on the tawa","1:15 PM"],["Evening Chai Rush","Friends sharing cutting chai","6:45 PM"],["Fresh Farsan","Freshly prepared Patra & crispy Petis","11:00 AM"]],
+ sl:["Sizzling Tawa Idli (Dark Masala • Pure Desi Ghee)","Mustard Seed Tadka","Fresh Coriander Finish","Ghee on the Tawa","Hot Idli Steam","Plated and Served"],
+ wa1:"Hello AMIT BROTHERS, I want to order:",wa2:"Total",wab:"Hello AMIT BROTHERS, I would like to ask about a bulk order."},
+gu:{nav1:"યાદો",nav2:"સ્વાદ",nav3:"મેનુ",nav4:"અમને મળો",order:"ટેકઅવે ઓર્ડર",h1a:"સ્વાદ જે તમારા",h1b:"દિલમાં",heroP:"દેશી ઘીની તવા ઈડલી, લોડેડ બર્ગર અને બેસવાની મજા આવે એવું ટેબલ.",svc:"ડાઇન-ઇન · ટેકઅવે · બલ્ક ઓર્ડર",
+ pre:"આ ફક્ત ફાસ્ટ ફૂડ નથી.",s1:"બાફેલું.",s2:"સિઝલ થયેલું.",s3:"મસાલેદાર.",storyP:"અમારી રેસિપી ધીમે ધીમે રંધાય છે, ઉતાવળે નહીં. સ્થાનિક મસાલા તાજા વાટેલા, ઈડલીનું ખીરું આખી રાત આરામ કરે અને જેમાં જરૂર હોય તેમાં શુદ્ધ દેશી ઘી. બસ, આ જ રહસ્ય.",explore:"મેનુ જુઓ ↘",
+ mt:"યાદોનું વૃક્ષ",treeP:"દરેક પ્લેટ એક નાની યાદ છોડી જાય છે. મિત્રોના ચહેરા, સાંજની ચાની ભીડ અને AB ને ઘર જેવું બનાવતી પળો.",menuT:"મેનુ",visitT:"અમને મળો",hours:"સવારે 8:00 થી રાત્રે 10:30, દરરોજ",dir:"દિશા મેળવો",
+ brand:"બે ભાઈઓ, એક તવો અને રેસિપી ચોખ્ખી તથા ઘી શુદ્ધ રાખવાનું વચન.",fq:"ઝડપી મેનુ",fl:"સરનામું",fb:"બલ્ક ઓર્ડર અને કેટરિંગ",fbP:"લગ્ન, તહેવાર અને ઓફિસ માટે પાતરા અને પેટીસ કિલોના ભાવે.",fbBtn:"WhatsApp પર વાત કરો",
+ yo:"તમારો ઓર્ડર",total:"કુલ",send:"WhatsApp પર ઓર્ડર કરો",add:"+ ઉમેરો",empty:"હજી કંઈ નથી. મેનુમાંથી ઉમેરો.",sig:"ખાસ",
+ open:"● ખુલ્લું • રાત્રે 10:30 સુધી",closed:"● બંધ • સવારે 8:00 વાગ્યે ખૂલશે",
+ cats:{all:"બધું",south:"સાઉથ ઇન્ડિયન",burger:"બર્ગર અને ફ્રાઈસ",sand:"સેન્ડવિચ",farsan:"પરંપરાગત નાસ્તા",bev:"પીણાં"},
+ hero:["દેશી ઘીમાં સિગ્નેચર તવા ઈડલી","AB સ્પેશિયલ જમ્બો વેજ ચીઝ બર્ગર","ચિલ્ડ વ્હિપ્ડ કોલ્ડ કોફી"],
+ mem:[["સવારની વરાળ","ગરમ ગરમ ઈડલીના બેચ","6:30 AM"],["સિઝલિંગ ગ્રીલ","તવા પર પીગળતી ચીઝ સેન્ડવિચ","1:15 PM"],["સાંજની ચાની ભીડ","મિત્રો સાથે કટિંગ ચા","6:45 PM"],["તાજા ફરસાણ","તાજા પાતરા અને કડક પેટીસ","11:00 AM"]],
+ sl:["સિઝલિંગ તવા ઈડલી (ડાર્ક મસાલા • શુદ્ધ દેશી ઘી)","રાઈનો વઘાર","તાજી કોથમીર","તવા પર ઘી","ગરમ ઈડલીની વરાળ","પીરસવા તૈયાર"],
+ wa1:"નમસ્તે AMIT BROTHERS, મારે ઓર્ડર આપવો છે:",wa2:"કુલ",wab:"નમસ્તે AMIT BROTHERS, મારે બલ્ક ઓર્ડર વિશે પૂછવું છે."}};
+const M=[
+{id:1,c:"south",en:"Idli",gu:"ઈડલી",p:30,i:"idli"},
+{id:2,c:"south",en:"Medu Vada",gu:"મેંદુવડા",p:30,i:"vada"},
+{id:3,c:"south",en:"Tawa Idli (Pure Desi Ghee)",gu:"તવા ઈડલી (દેશી ઘી માં)",p:50,i:"idli",sig:1},
+{id:4,c:"burger",en:"Mini Burger",gu:"મીની બર્ગર",p:20,i:"burger"},
+{id:5,c:"burger",en:"Mini Burger Special AB",gu:"મીની બર્ગર સ્પેશિયલ AB",p:30,i:"burger"},
+{id:6,c:"burger",en:"Jumbo Burger",gu:"જમ્બો બર્ગર",p:70,i:"burger"},
+{id:7,c:"sand",en:"Veg Sandwich",gu:"વેજ સેન્ડવિચ",p:30,i:"sand"},
+{id:8,c:"sand",en:"Veg Cheese Sandwich",gu:"વેજ ચીઝ સેન્ડવિચ",p:40,i:"sand"},
+{id:9,c:"sand",en:"Veg Cheese Grill Sandwich",gu:"વેજ ચીઝ ગ્રીલ સેન્ડવિચ",p:50,i:"sand"},
+{id:10,c:"burger",en:"French Fries",gu:"ફ્રેન્ચ ફ્રાઈસ",p:30,i:"fries"},
+{id:11,c:"burger",en:"Peri Peri Fries",gu:"પેરી પેરી ફ્રાઈસ",p:40,i:"fries"},
+{id:12,c:"farsan",en:"Gharghanti Special Patra",gu:"ઘરઘંટી સ્પેશિયલ પાતરા",p:200,u:"/ kg",i:"farsan"},
+{id:13,c:"farsan",en:"Petis",gu:"પેટીસ",p:320,u:"/ kg",i:"farsan"},
+{id:14,c:"bev",en:"Cold Coffee",gu:"કોલ્ડ કોફી",p:25,i:"coffee"},
+{id:15,c:"bev",en:"Cutting Chai",gu:"ચા",p:10,i:"chai"}];
+const HERO=[{id:3,i:"idli",p:50},{id:6,i:"burger",p:70},{id:14,i:"coffee",p:25}];
+const TREE=[["idli",6,-5,0],["sand",28,4,70],["chai",52,-3,10],["farsan",74,5,60]];
+const SL=["idli","idli","vada","idli","idli","idli"];
+let lang=localStorage.getItem("abLang")||"en",cat="all",cart={},si=0;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const tr=k=>T[lang][k],nm=i=>lang==="gu"?i.gu:i.en,gc=lang=>lang==="gu"?"gu":"";
+function img(k,alt,cls=""){return `<img src="${P(IM[k])}" alt="${alt}" class="ph ${cls}" loading="lazy" onerror="this.onerror=null;this.removeAttribute('src')">`}
+function render(){
+ document.documentElement.lang=lang;
+ $$("[data-i]").forEach(e=>e.textContent=tr(e.dataset.i));
+ $("#lEN").style.color=lang==="en"?"var(--terra)":"";$("#lGU").style.color=lang==="gu"?"var(--terra)":"";
+ $("#hero").innerHTML=HERO.map((h,n)=>`<div class="fcard" data-tilt data-tilt-perspective="1000" data-tilt-scale="1.05" data-tilt-max="12" data-tilt-glare data-tilt-max-glare=".2" style="margin-top:${n===1?"28px":"0"}">${img(h.i,tr("hero")[n])}<div class="p-5 flex justify-between items-center gap-3"><h3 class="text-lg font-bold ${gc(lang)}">${tr("hero")[n]}</h3><span class="font-semibold" style="color:var(--terra)">₹${h.p}</span></div><div class="px-5 pb-5"><button class="btn w-full" onclick="add(${h.id})">${tr("add")}</button></div></div>`).join("");
+ $("#tree").innerHTML=TREE.map((t,n)=>{const m=tr("mem")[n];return `<div class="pol absolute" style="left:${t[1]}%;top:${t[3]+130}px;transform:rotate(${t[2]}deg)">${img(t[0],m[0])}<p class="serif text-center mt-2 font-bold ${gc(lang)}" style="font-size:.95rem">${m[0]}</p><p class="text-center text-xs ${gc(lang)}">${m[1]}</p><p class="stamp text-center mt-1">📅 31 Oct 2026 · ${m[2]}</p></div>`}).join("");
+ $("#tabs").innerHTML=Object.keys(tr("cats")).map(k=>`<button role="tab" class="tab ${k===cat?"on":""}" onclick="setCat('${k}')">${tr("cats")[k]}</button>`).join("");
+ menu();cartR();slideR();live();
+ if(window.VanillaTilt)VanillaTilt.init($$("[data-tilt]"));
+ if(window.lucide)lucide.createIcons();
+}
+function menu(){$("#menuList").innerHTML=M.filter(i=>cat==="all"||i.c===cat).map(i=>`<div class="flex items-center gap-4 py-4" style="border-bottom:1px solid #e3d9cb">${img(i.i,i.en,"thumb")}<div class="flex-1"><p class="font-semibold text-lg leading-snug ${gc(lang)}" style="color:var(--ink)">${nm(i)} ${i.sig?`<span class="text-[10px] ml-1 px-2 py-0.5 rounded-full text-white align-middle tracking-wider" style="background:var(--amber)">${tr("sig")}</span>`:""}</p><p class="text-sm">₹${i.p} ${i.u||""}</p></div><button class="btn shrink-0 !px-4" onclick="add(${i.id})">${tr("add")}</button></div>`).join("")}
+function setCat(c){cat=c;$$("#tabs .tab").forEach((b,n)=>b.classList.toggle("on",Object.keys(tr("cats"))[n]===c));menu()}
+function slideR(){const s=$("#slideImg");s.src=P(IM[SL[si]]);s.onerror=()=>{s.onerror=null;s.removeAttribute("src")};$("#slideCap").textContent=`0${si+1} / 06 — ${tr("sl")[si]}`}
+function slide(d){si=(si+d+6)%6;slideR()}
+function add(id){cart[id]=(cart[id]||0)+1;cartR();if(M.find(m=>m.id===id).sig&&window.confetti)confetti({particleCount:60,spread:70,origin:{y:.85},colors:["#C85A32","#D4A373","#FBF8F3"]})}
+function chg(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];cartR()}
+const total=()=>Object.entries(cart).reduce((s,[id,q])=>s+M.find(m=>m.id==id).p*q,0),count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+function cartR(){
+ $$(".cN").forEach(e=>e.textContent=count());$$(".cT").forEach(e=>e.textContent=total());
+ const ids=Object.keys(cart);
+ $("#cartItems").innerHTML=ids.length?ids.map(id=>{const i=M.find(m=>m.id==id);return `<div class="flex justify-between items-center gap-3"><div><p class="font-semibold ${gc(lang)}" style="color:var(--ink)">${nm(i)}</p><p class="text-sm">₹${i.p} ${i.u||""}</p></div><div class="flex items-center gap-2"><button class="qty" onclick="chg(${id},-1)" aria-label="Less">−</button><span>${cart[id]}</span><button class="qty" onclick="chg(${id},1)" aria-label="More">+</button></div></div>`}).join(""):`<p>${tr("empty")}</p>`}
+function toggleCart(o){$("#drawer").classList.toggle("open",o)}
+function sendWA(bulk){
+ let msg;
+ if(bulk||!count())msg=tr("wab");
+ else{msg=`${tr("wa1")} `+Object.entries(cart).map(([id,q])=>`${M.find(m=>m.id==id).en} x ${q}`).join(", ")+` - ${tr("wa2")}: ₹${total()}`;if(window.confetti)confetti({particleCount:120,spread:90,origin:{y:.6}})}
+ window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener")}
+function live(){const n=new Date(),m=n.getHours()*60+n.getMinutes(),o=m>=480&&m<1350,e=$("#live");e.textContent=o?tr("open"):tr("closed");e.style.color=o?"#2e7d32":"#a8451f"}
+function setLang(l){lang=l;localStorage.setItem("abLang",l);render()}
+$("#lEN").onclick=()=>setLang("en");$("#lGU").onclick=()=>setLang("gu");
+// Drag polaroids (mouse + touch)
+document.addEventListener("pointerdown",e=>{const p=e.target.closest(".pol");if(!p)return;e.preventDefault();const r=p.getBoundingClientRect(),pr=p.parentElement.getBoundingClientRect(),ox=e.clientX-r.left,oy=e.clientY-r.top;p.classList.add("drag");p.setPointerCapture(e.pointerId);
+ const mv=v=>{p.style.left=(v.clientX-pr.left-ox)+"px";p.style.top=(v.clientY-pr.top-oy)+"px"};
+ const up=()=>{p.classList.remove("drag");p.removeEventListener("pointermove",mv);p.removeEventListener("pointerup",up)};p.addEventListener("pointermove",mv);p.addEventListener("pointerup",up)});
+document.addEventListener("DOMContentLoaded",render);
+window.addEventListener("load",()=>{if(window.VanillaTilt)VanillaTilt.init($$("[data-tilt]"));if(window.lucide)lucide.createIcons()});
+setInterval(live,60000);
+</script>
+</body>
+</html>
